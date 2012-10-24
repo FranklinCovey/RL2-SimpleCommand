@@ -1,0 +1,11 @@
+Some helper classes for building complex commands with RobotLegs 2.
+
+h1. Usage
+
+Batch commands should extend SimpleBatchCommand. It's children commands should extend SimpleCommand.
+
+Each SimpleCommand requires a call to the commandComplete() method, which informs the parent batch command that the child is complete. 
+
+Please see the "RobotLegs framework":http://www.robotlegs.org for more info.
+
+These classes were compiled to work with RobotLegs v2.0.0.
