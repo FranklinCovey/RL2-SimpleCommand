@@ -1,12 +1,17 @@
+//------------------------------------------------------------------------------
+//  Copyright (c) 2012 the original author or authors. All Rights Reserved. 
+// 
+//  NOTICE: You are permitted you to use, modify, and distribute this file 
+//  in accordance with the terms of the license agreement accompanying it. 
+//------------------------------------------------------------------------------
+
 package org.robotlegs.utilities.simplecommand
 {
-	import flash.events.Event;
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
 
 	import org.robotlegs.utilities.simplecommand.api.SimpleCommandEvent;
 	import org.robotlegs.utilities.simplecommand.api.SimpleCommandFaultEvent;
-	import org.swiftsuspenders.InjectionEvent;
 	import org.swiftsuspenders.Injector;
 
 	import robotlegs.bender.extensions.commandCenter.api.ICommand;
@@ -41,7 +46,8 @@ package org.robotlegs.utilities.simplecommand
 			_completeCount = 0;
 			_currentIndex = 0;
 
-			var batchCommandClass:Class = Class(getDefinitionByName(getQualifiedClassName(this)));
+			var className:String = getQualifiedClassName(this);
+			var batchCommandClass:Class = getDefinitionByName(className) as Class;
 
 			_injector ||= injector.createChildInjector();
 			_injector.map(SimpleBatchCommand).toValue(this);
