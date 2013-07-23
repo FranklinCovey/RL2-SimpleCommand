@@ -8,11 +8,10 @@
 package org.robotlegs.utilities.simplecommand
 {
 	import flash.events.EventDispatcher;
-
+	
 	import org.robotlegs.utilities.simplecommand.api.SimpleCommandEvent;
 	import org.robotlegs.utilities.simplecommand.api.SimpleCommandFaultEvent;
-	import org.swiftsuspenders.Injector;
-
+	
 	import robotlegs.bender.extensions.commandCenter.api.ICommand;
 
 

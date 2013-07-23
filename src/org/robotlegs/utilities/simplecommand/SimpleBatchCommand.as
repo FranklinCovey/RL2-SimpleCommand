@@ -9,12 +9,12 @@ package org.robotlegs.utilities.simplecommand
 {
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
-
+	
 	import org.robotlegs.utilities.simplecommand.api.SimpleCommandEvent;
 	import org.robotlegs.utilities.simplecommand.api.SimpleCommandFaultEvent;
-	import org.swiftsuspenders.Injector;
-
+	
 	import robotlegs.bender.extensions.commandCenter.api.ICommand;
+	import robotlegs.bender.framework.api.IInjector;
 
 	public class SimpleBatchCommand extends SimpleCommand implements ICommand
 	{
@@ -22,12 +22,12 @@ package org.robotlegs.utilities.simplecommand
 		private var _currentIndex:uint;
 		private var _completeCount:uint;
 		private var _executing:Boolean = false;
-		private var _injector:Injector;
+		private var _injector:IInjector;
 
 		public var sequenceMode:Boolean = false;
 
 		[Inject]
-		public var injector:Injector;
+		public var injector:IInjector;
 
 
 		/**
@@ -49,7 +49,7 @@ package org.robotlegs.utilities.simplecommand
 			var className:String = getQualifiedClassName(this);
 			var batchCommandClass:Class = getDefinitionByName(className) as Class;
 
-			_injector ||= injector.createChildInjector();
+			_injector ||= injector.createChild();
 			_injector.map(SimpleBatchCommand).toValue(this);
 			_injector.map(batchCommandClass).toValue(this);
 
